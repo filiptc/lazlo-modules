@@ -1,2 +1,5 @@
-# lazlo-plugins
-Plugins for Lazlo
+Modules for Lazlo
+=====
+
+List of modules (TODO)
+-----
