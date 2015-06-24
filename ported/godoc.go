@@ -24,7 +24,7 @@ var godocSearchURL = "http://api.godoc.org/search"
 
 var GoDoc = &lazlo.Module{
 	Name:  `GoDoc`,
-	Usage: `godoc <package name>: Searchs godoc.org and displays the first result.`,
+	Usage: `godoc <package name>: Searchs godoc.org and displays the first 10 results.`,
 	Run:   goDocRun,
 }
 
