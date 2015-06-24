@@ -1,3 +1,4 @@
+// Ported from djosephsen/slacker
 package ported
 
 import (
@@ -35,7 +36,7 @@ type gifyout struct {
 
 var Gifme = &lazlo.Module{
 	Name:  `Gifme`,
-	Usage: `"%BOTNAME% gif me freddie mercury": prints the usage information of every registered plugin`,
+	Usage: `"%BOTNAME% gif me freddie mercury": returns a random rated:PG gif of freddy mercury via the giphy API`,
 	Run:   gifmeRun,
 }
 
