@@ -4,11 +4,12 @@ package ported
 import (
 	"encoding/json"
 	"fmt"
-	lazlo "github.com/djosephsen/lazlo/lib"
 	"math/rand"
 	"net/http"
 	"regexp"
 	"time"
+
+	lazlo "github.com/djosephsen/lazlo/lib"
 )
 
 type insult struct {
@@ -23,13 +24,13 @@ var LoveAndWar = &lazlo.Module{
 }
 
 func loveAndWarRun(b *lazlo.Broker) {
-	cb := b.MessageCallback(`(?i)(love|insult) (@*\w+)`, true)
+	cb := b.MessageCallback(`(?i)(love|insult) (@*\w+)$`, true)
 	for {
 		pm := <-cb.Chan
 		var reply string
 		act := pm.Match[1]
 		user := pm.Match[2]
-		if isme, _ := regexp.MatchString(`(?i)me`, user); isme {
+		if isme, _ := regexp.MatchString(`(?i)^me$`, user); isme {
 			user = b.SlackMeta.GetUserName(pm.Event.User)
 		}
 		now := time.Now()
