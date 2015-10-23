@@ -17,6 +17,9 @@ var Roll = &lazlo.Module{
 		for {
 			pm := <-cb.Chan
 			s := strings.Replace(pm.Match[0], "roll ", "", 1)
+			if s == "" {
+				return
+			}
 			p := dice.NewPouch(s)
 			p.Roll()
 			pm.Event.Respond(fmt.Sprintf("@%s `%s` roll result:\n```%s```", b.SlackMeta.GetUserName(pm.Event.User), s, p.String()))
