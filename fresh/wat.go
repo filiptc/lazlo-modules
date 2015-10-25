@@ -3,7 +3,6 @@ package fresh
 import (
 	"encoding/json"
 	"fmt"
-	"strings"
 
 	lazlo "github.com/djosephsen/lazlo/lib"
 	"github.com/sadbox/mediawiki"
@@ -35,7 +34,7 @@ func watRun(b *lazlo.Broker) {
 			fmt.Sprintf(
 				"*%v*\n%v",
 				response.Query.PageList[0].Title,
-				getFirstParagraph(response.Query.PageList[0].Extract),
+				response.Query.PageList[0].Extract,
 			),
 		)
 	}
@@ -63,10 +62,6 @@ func readExtract(client *mediawiki.MWApi, search string) (*Response, error) {
 		return nil, err
 	}
 	return &response, nil
-}
-
-func getFirstParagraph(str string) string {
-	return strings.Split(str, "\n")[0]
 }
 
 type Response struct {
