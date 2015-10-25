@@ -10,7 +10,7 @@ import (
 
 var Wat = &lazlo.Module{
 	Name:  `Wat`,
-	Usage: `Wikipedia queries`,
+	Usage: `"wat is <term>": Returns wikipedia info`,
 	Run:   watRun,
 }
 
