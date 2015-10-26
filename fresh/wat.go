@@ -15,7 +15,7 @@ var Wat = &lazlo.Module{
 }
 
 func watRun(b *lazlo.Broker) {
-	cb := b.MessageCallback(`(?i)^wat +is +(.*)$`, false)
+	cb := b.MessageCallback(`(?i)^wat +is +(.+?) *$`, false)
 	for {
 		pm := <-cb.Chan
 		search := pm.Match[1]
@@ -42,13 +42,13 @@ func watRun(b *lazlo.Broker) {
 
 func readExtract(client *mediawiki.MWApi, search string) (*Response, error) {
 	query := map[string]string{
-		"action":      "query",
-		"prop":        "extracts",
-		"titles":      search,
-		"redirects": "true",
-		"exintro":     "true",
-		"explaintext": "true",
-		"exsentences": "3",
+		"action":          "query",
+		"prop":            "extracts",
+		"titles":          search,
+		"redirects":       "true",
+		"exintro":         "true",
+		"explaintext":     "true",
+		"exsentences":     "3",
 		"exsectionformat": "plain",
 	}
 	body, err := client.API(query)
